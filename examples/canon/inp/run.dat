@@ -1,0 +1,33 @@
+
+input
+    run_prefix = ./run
+    save_prefix = ./save
+    canonical = True
+end input
+
+spc
+    1-7  # 6-7 are basis species
+end spc
+
+pes
+    1: 2
+end pes
+
+# els
+#     # spc init_geom     runlvl=pm3    inplvl=pm3
+#     # ts  find_ts       runlvl=pm3    inplvl=pm3
+#     all conf_energy   runlvl=dft    inplvl=pm3
+#     # all conf_hess     runlvl=pm3    inplvl=pm3
+# end els
+# 
+# thermo
+#     write_mess      kin_model=global  spc_model=global
+#     run_mess        kin_model=global  spc_model=global
+#     run_fits        kin_model=global  spc_model=global
+# end thermo
+
+ktp
+    write_mess      kin_model=global  spc_model=global
+    run_mess
+    run_fits        kin_model=global  spc_model=global
+end ktp
