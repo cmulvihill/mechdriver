@@ -806,7 +806,7 @@ def get_freq_location(cnf_fs, geo, freq_thy_locs, cnf_locs):
                 if ts_freq_cnf_fs[-1].file.hessian.exists(freq_cnf_locs):
                     freq_locs.append(freq_cnf_locs)
             match_dct = fs_confs_dict(
-                ts_freq_cnf_fs, freq_locs, cnf_fs, [cnf_locs])
+                ts_freq_cnf_fs, freq_locs, cnf_fs, [cnf_locs], saddle=True)
             if match_dct[tuple(cnf_locs)] is not None:
                 match_freqs_locs = tuple(match_dct[tuple(cnf_locs)])
                 freq_cnf_fs = ts_freq_cnf_fs

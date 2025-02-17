@@ -98,7 +98,18 @@ def _gaussian(method_dct, prog, job=None, geo=None, spc_info=None):
                  {'job_options': ['Tight', 'calcall']}],
             ],
         })
-
+    if method in elstruct.Method.Dft.REVDSD:
+        rev_recipe = (
+            '# empiricaldispersion=gd3bj '
+            'iop(3/125=0079905785,3/78=0429604296,3/76=0310006900,'
+            '3/74=1004,3/174=0437700,3/175=-1,3/176=0,3/177=1,'
+            '3/178=5500000)'
+        )
+        if 'gen_lines' not in kwargs:
+            kwargs['gen_lines'] = {1: rev_recipe}
+        else:
+            kwargs['gen_lines'][1] = kwargs['gen_lines'].get(1, []) + [rev_recipe]
+    
     if job == elstruct.Job.OPTIMIZATION:
         kwargs.update({
             'feedback': True,
